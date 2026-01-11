@@ -1,0 +1,7 @@
+{
+  "name": "MIR VPN - Premium Dark Edition",
+  "description": "A high-performance VPN dashboard with a clean dark interface, premium gateways, and real-time connectivity statistics optimized for speed.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
