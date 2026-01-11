@@ -1,5 +1,5 @@
 
-import { Server } from './types';
+import { Server } from './types.ts';
 
 export const SERVERS: Server[] = [
   { id: '1', country: 'United States', city: 'New York', flag: '🇺🇸', latency: 45, isPremium: true },

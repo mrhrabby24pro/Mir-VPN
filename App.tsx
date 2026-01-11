@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Shield, ShieldCheck, Globe, Zap, Settings, User, ChevronRight, BarChart3, Wifi, Lock, ExternalLink } from 'lucide-react';
-import { SERVERS, APP_STRINGS } from './constants';
-import { Server, ConnectionStatus, TrafficData } from './types';
+import { SERVERS, APP_STRINGS } from './constants.ts';
+import { Server, ConnectionStatus, TrafficData } from './types.ts';
 
 const App: React.FC = () => {
   const [status, setStatus] = useState<ConnectionStatus>('disconnected');
@@ -14,7 +14,6 @@ const App: React.FC = () => {
 
   const t = APP_STRINGS.en;
 
-  // Simulate connection process
   const toggleConnection = () => {
     if (status === 'disconnected') {
       setStatus('connecting');
@@ -29,7 +28,6 @@ const App: React.FC = () => {
     }
   };
 
-  // Simulate real-time traffic
   useEffect(() => {
     let interval: any;
     if (status === 'connected') {
@@ -54,7 +52,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen max-w-md mx-auto bg-[#020617] relative overflow-hidden shadow-2xl text-slate-50">
+    <div className="flex flex-col h-screen max-w-md mx-auto bg-[#020617] relative overflow-hidden shadow-2xl text-slate-50 border-x border-white/5">
       
       {/* Background Glow Decorations */}
       <div className="absolute top-[-10%] left-[-10%] w-64 h-64 bg-blue-600/10 rounded-full blur-[100px]" />
@@ -78,7 +76,6 @@ const App: React.FC = () => {
         {activeTab === 'home' && (
           <div className="flex flex-col items-center pt-4 space-y-10 flex-1">
             
-            {/* Status Info */}
             <div className="text-center">
               <h2 className={`text-2xl font-bold mb-1 transition-colors duration-500 ${status === 'connected' ? 'text-emerald-400' : status === 'connecting' ? 'text-blue-400' : 'text-slate-500'}`}>
                 {status === 'connected' ? t.status_connected : status === 'connecting' ? t.status_connecting : t.status_disconnected}
@@ -86,7 +83,6 @@ const App: React.FC = () => {
               <p className="text-slate-500 text-sm font-medium tracking-wide">{t.ip_address} <span className="text-slate-300">{ip}</span></p>
             </div>
 
-            {/* Power Button */}
             <div className="relative group">
               <div className={`absolute inset-0 rounded-full blur-3xl transition-all duration-700 ${status === 'connected' ? 'bg-emerald-500/20' : status === 'connecting' ? 'bg-blue-500/20' : 'bg-slate-800/20'}`} />
               <button 
@@ -107,7 +103,6 @@ const App: React.FC = () => {
               </button>
             </div>
 
-            {/* Traffic Stats */}
             <div className="grid grid-cols-2 gap-4 w-full">
               <div className="glass p-4 rounded-2xl flex items-center gap-3 border border-white/5">
                 <div className="p-2 bg-blue-500/10 rounded-lg">
@@ -129,7 +124,6 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Server Selector Button */}
             <button 
               onClick={() => setShowServerList(true)}
               className="w-full glass p-4 rounded-2xl flex items-center justify-between hover:bg-slate-800/50 transition-all border border-white/5 active:scale-[0.98]"
